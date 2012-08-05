@@ -1,0 +1,23 @@
+name:           Euler
+version:        0.1
+cabal-version:  >= 1.2
+build-type:     Simple
+author:         Konrad Gądek
+tested-with:    GHC==7.4.1
+stability:      not present
+license:        GPL-3
+
+library
+  hs-source-dirs:  src
+  build-depends:   base >= 4
+  ghc-options:     -Wall
+  other-modules:   
+                   Problem_001,
+                   Problem_002,
+                   Problem_003,
+                   Problem_004,
+                   Problem_005,
+                   Problem_006,
+                   Problem_007,
+                   Problem_008
+
