@@ -10,8 +10,8 @@
 # Write Markdown style, enclose code with \begin{code}..\end{code} block and use small sed script to convert it to Markdown+Bird.
 # What is cool, GHC does not complain at all!
 
-.SUFFIXES: .lhs .mkd .html .tex .pdf
-.PHONY: all clean
+.SUFFIXES: .lhs .mkd .html .tex .pdf .cpp .out
+.PHONY: all clean docs_lhs progs_cpp
 
 PANDOC := pandoc --no-wrap -sS
 HSCOLOUR := hscolour -lit
@@ -19,11 +19,19 @@ SED_CONVERT := sed '/\\begin{code}/,/\\end{code}/s/^/> /g'
 # grep filter could be amended (more general regex) but works well for me
 GREP_FILTER := grep -ve '\\\(begin\|end\){code}'
 
+PROGS_LHS = 001 002 003 004 005 006 007 008 009 010
+PROGS_CPP = 007 010
 
-all: Problem_001.html Problem_002.html Problem_003.html Problem_004.html Problem_005.html \
-	Problem_006.html Problem_007.html Problem_008.html Problem_009.html
+
+all: docs_lhs progs_cpp
+docs_lhs: $(PROGS_LHS:%=Problem_%.html)
+progs_cpp: $(PROGS_CPP:%=Problem_%.out)
 clean:
 	rm -f *.html
+	rm -f *.out
+
+.cpp.out:
+	clang++ $< -o $@ -O2
 
 # get mathjax (http://www.mathjax.org/) and hscolour.css (http://www.cs.york.ac.uk/fp/darcs/hscolour/)
 .lhs.html:

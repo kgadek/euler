@@ -17,10 +17,11 @@ What is the 10 001st prime number?
 Solution
 --------
 
-This nice prime generator was created by [Bird][1]. I must admit I failed to prove myself a worthy programmer and used C++ to solve this problem...
+I must admit I failed to prove myself a worthy programmer and used C++ to solve this problem...
 
     #define PRIMES_TO_SEARCH 10001
-  
+    
+    //BTW. No, this is not a Eratosthenes sieve. Seriously.
     int main() {
       vector<int> primes;
       int i;
@@ -37,7 +38,7 @@ This nice prime generator was created by [Bird][1]. I must admit I failed to pro
       printf("%d\n", primes.back());
     }
 
-Anyway, here is *the Haskell way* solution; primes generator.
+Anyway, here is *the Haskell way* solution; primes generator (created by [Bird][1]).
 
 [1]: http://www.cs.hmc.edu/~oneill/papers/Sieve-JFP.pdf
 
