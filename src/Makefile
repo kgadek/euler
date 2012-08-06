@@ -20,7 +20,8 @@ SED_CONVERT := sed '/\\begin{code}/,/\\end{code}/s/^/> /g'
 GREP_FILTER := grep -ve '\\\(begin\|end\){code}'
 
 
-all: Problem_001.html Problem_002.html Problem_003.html Problem_004.html Problem_005.html Problem_006.html Problem_007.html Problem_008.html
+all: Problem_001.html Problem_002.html Problem_003.html Problem_004.html Problem_005.html \
+	Problem_006.html Problem_007.html Problem_008.html Problem_009.html
 clean:
 	rm -f *.html
 
