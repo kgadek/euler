@@ -19,7 +19,7 @@ SED_CONVERT := sed '/\\begin{code}/,/\\end{code}/s/^/> /g'
 # grep filter could be amended (more general regex) but works well for me
 GREP_FILTER := grep -ve '\\\(begin\|end\){code}'
 
-PROGS_LHS = 001 002 003 004 005 006 007 008 009 010
+PROGS_LHS = 001 002 003 004 005 006 007 008 009 010 012
 PROGS_CPP = 007 010
 
 

@@ -37,5 +37,5 @@ digits = dedigit num []
 And now we solve it ;P
 \begin{code}
 solution :: Integer
-solution = foldl1 max $ map (\xs -> foldl (+) 0 (take 5 xs)) $ tails digits
+solution = foldl1 max $ map (foldl (*) 1) $ map (take 5) $ tails digits
 \end{code}
