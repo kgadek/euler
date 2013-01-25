@@ -50,6 +50,6 @@ $k(x \cdot y) = k\left( \frac{p}{\gcd(\alpha, p)} \right) \cdot k\left( \frac{q}
 
 \begin{code}
 
-divisors x = x : foldr (\d a -> if x `rem` d == 0 then (d:a) else a) [1] (2:[3,5..x-1])
+divisors x = 1 : foldr (\d a -> if x `rem` d == 0 then (d:a) else a) [x] (2:[3,5..x-1])
 
 \end{code}

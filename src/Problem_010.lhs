@@ -1,5 +1,7 @@
 \begin{code}
 module Problem_010 where
+
+import Data.PQueue.Prio.Min
 \end{code}
 
 
@@ -45,12 +47,27 @@ See *my* solution (well, [sort of][1]) to problem 7.
 --                         | x > y  = y:merge' (x:xs) ys
 \end{code}
 
-The solution:
+The solution is simple:
 
 \begin{code}
 solution :: Integer
 solution = sum $ takeWhile (<2000000) primes
 \end{code}
 
-And what? This is slow, runs for about 30sec.
+Real question is: how make prime searching fast in Haskell?
 
+\begin{code}
+primes = 2 : sieve [3,5..]
+
+sieve []                      	= []
+sieve (x:xs)                  	= x : sieve' xs (insertprime x xs (empty))
+  where insertprime p xs table	= insert (p*p) (map (*p) xs) table
+        sieve' [] table       	= []
+        sieve' (x:xs) table
+					| nextComposite <= x	= sieve' xs (adjust table)
+					| otherwise         	= x : sieve' xs (insertprime x xs table)
+					    where
+								nextComposite = fst $ findMin table
+								adjust table
+									| n <= x = adjust ()
+\end{code}
